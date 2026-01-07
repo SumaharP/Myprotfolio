@@ -1,151 +1,269 @@
-<!-- redeploy -->
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sumahar Pelluri | Business Analyst (SaaS / Fintech)</title>
+
   <style>
     :root{
-      --bg:#0b1020;
-      --card:#111a33;
-      --text:#e9ecf5;
-      --muted:#b9c0d4;
-      --line:#26335f;
-      --accent:#6ea8ff;
+      --bg:#0a0f1f;
+      --card:#141c3a;
+      --text:#f2f4fb;
+      --muted:#c7cde6;
+      --line:#2f3b73;
+      --accent:#7aa2ff;
       --accent2:#7ef0c2;
+
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(110,168,255,.18), transparent 60%),
-                  radial-gradient(900px 500px at 100% 0%, rgba(126,240,194,.14), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(126,240,194,.14), transparent 55%),
+        var(--bg);
       color:var(--text);
-      line-height:1.55;
+      line-height:1.75;
+      font-size:16px;
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 60px}
+
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:1040px; margin:0 auto; padding:26px 16px 60px; }
+
+    /* Top bar */
     .topbar{
-      display:flex; gap:14px; align-items:center; justify-content:space-between;
-      padding:18px; border:1px solid var(--line); border-radius:18px;
-      background: rgba(17,26,51,.75);
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background: rgba(20,28,58,.72);
+      box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
-    .name{font-size:20px; font-weight:800; letter-spacing:.2px}
-    .role{color:var(--muted); font-size:13px; margin-top:2px}
-    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
+    .left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 280px;
+    }
+
+    .avatar{
+      width:88px;
+      height:88px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(122,162,255,.65);
+      box-shadow: 0 8px 18px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.06);
+      flex: 0 0 auto;
+    }
+
+    .name{ font-size:20px; font-weight:800; letter-spacing:.2px; margin:0; }
+    .role{ color:var(--muted); font-size:13px; margin-top:4px; }
+
+    .links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
     .chip{
       border:1px solid var(--line);
-      padding:8px 10px;
+      padding:9px 11px;
       border-radius:999px;
       font-size:13px;
       color:var(--text);
-      background: rgba(11,16,32,.35);
+      background: rgba(10,15,31,.35);
+      white-space:nowrap;
     }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(122,162,255,.55);
+      padding:9px 12px;
+      border-radius:12px;
+      color:var(--text);
+      background: rgba(122,162,255,.14);
+      font-size:13px;
+      text-decoration:none;
+    }
+    .btn:hover{ text-decoration:none; filter:brightness(1.05); }
+
+    /* Hero */
     .hero{
       margin-top:18px;
       padding:22px;
       border:1px solid var(--line);
       border-radius:18px;
-      background: rgba(17,26,51,.55);
+      background: rgba(20,28,58,.65);
+      box-shadow: var(--shadow);
     }
-    .hero h1{margin:0 0 10px; font-size:28px}
-    .hero p{margin:0; color:var(--muted); max-width:72ch}
+
+    h1{
+      margin:0 0 14px;
+      font-size:30px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:72ch;
+      font-size:16px;
+    }
+
+    .heroActions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* Layout grid */
     .grid{
       margin-top:18px;
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.25fr .75fr;
       gap:18px;
     }
-    @media (max-width: 860px){
-      .grid{grid-template-columns: 1fr}
-      .links{justify-content:flex-start}
+
+    @media (max-width: 900px){
+      .topbar{ flex-direction:column; align-items:stretch; }
+      .links{ justify-content:flex-start; }
+      .left{ width:100%; }
+      .grid{ grid-template-columns: 1fr; }
     }
+
     .card{
-      padding:18px;
+      padding:22px;
       border:1px solid var(--line);
       border-radius:18px;
-      background: rgba(17,26,51,.55);
+      background: rgba(20,28,58,.72);
+      box-shadow: var(--shadow);
     }
-    h2{font-size:16px; margin:0 0 12px; letter-spacing:.2px}
-    .muted{color:var(--muted)}
-    .list{margin:0; padding-left:18px}
-    .list li{margin:8px 0}
+
+    h2{
+      font-size:18px;
+      margin:0 0 14px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .muted{ color:var(--muted); }
+
+    .list{ margin:0; padding-left:18px; }
+    .list li{ margin:10px 0; line-height:1.7; }
+
+    .job{
+      border-top:1px dashed rgba(47,59,115,.85);
+      padding-top:14px;
+      margin-top:14px;
+    }
+    .job:first-of-type{ border-top:none; padding-top:0; margin-top:0; }
+
+    .jobhead{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .jobtitle{ font-weight:800; }
+    .jobmeta{ color:var(--muted); font-size:13px; }
+
+    /* KPI tiles */
     .kpi{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:12px; margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
     }
+
+    @media (max-width: 520px){
+      .kpi{ grid-template-columns: 1fr; }
+    }
+
     .pill{
       border:1px solid var(--line);
       border-radius:16px;
       padding:12px;
-      background: rgba(11,16,32,.35);
+      background: rgba(10,15,31,.35);
     }
-    .pill b{display:block; font-size:14px}
-    .pill span{color:var(--muted); font-size:13px}
-    .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .pill b{ display:block; font-size:14px; }
+    .pill span{ color:var(--muted); font-size:13px; }
+
+    /* Tags */
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; }
     .tag{
       font-size:12px;
       padding:7px 10px;
       border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(11,16,32,.35);
+      background: rgba(10,15,31,.35);
       color:var(--muted);
     }
-    .job{
-      border-top:1px dashed rgba(38,51,95,.8);
-      padding-top:12px;
-      margin-top:12px;
-    }
-    .job:first-of-type{border-top:none; padding-top:0; margin-top:0}
-    .jobhead{
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin-bottom:8px;
-    }
-    .jobtitle{font-weight:800}
-    .jobmeta{color:var(--muted); font-size:13px}
+
+    /* Footer */
     .footer{
       margin-top:18px;
       padding:18px;
       border:1px solid var(--line);
       border-radius:18px;
-      background: rgba(17,26,51,.35);
+      background: rgba(20,28,58,.55);
       color:var(--muted);
       font-size:13px;
-    }
-    .btn{
-      display:inline-block;
-      margin-top:12px;
-      border:1px solid rgba(110,168,255,.55);
-      padding:10px 12px;
-      border-radius:12px;
-      color:var(--text);
-      background: rgba(110,168,255,.12);
-      font-size:13px;
+      box-shadow: var(--shadow);
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+
+    <!-- TOP BAR -->
     <div class="topbar">
-      <div>
-        <div class="name">Sumahar Pelluri</div>
-        <div class="role">Business Analyst • SaaS / Fintech • Ops Automation • CRM • Data</div>
+      <div class="left">
+        <!-- 1) Upload your photo as profile.jpg in the repo root -->
+        <img class="avatar" src="profile.jpg" alt="Sumahar Pelluri">
+
+        <div>
+          <p class="name">Sumahar Pelluri</p>
+          <div class="role">Business Analyst • SaaS / Fintech • Ops Automation • CRM • Data</div>
+        </div>
       </div>
+
       <div class="links">
         <a class="chip" href="mailto:sumaharp@gmail.com">sumaharp@gmail.com</a>
         <a class="chip" href="tel:+918331957491">+91 83319 57491</a>
-        <!-- Replace with your LinkedIn URL -->
-        <a class="chip" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+
+        <!-- 2) Replace # with your LinkedIn URL -->
+        <a class="btn" href="https://www.linkedin.com/in/sumahar-pelluri-53025b170/" target="_blank" rel="noreferrer">https://www.linkedin.com/in/sumahar-pelluri-53025b170/</a>
+
+        <!-- 3) Upload your resume PDF as Sumahar_Pelluri_Resume.pdf in repo root -->
+        <a class="btn" href="Sumahar_Pelluri_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+
         <span class="chip">Andhra Pradesh, India</span>
       </div>
     </div>
 
+    <!-- HERO -->
     <section class="hero">
       <h1>Turning messy operations into scalable systems.</h1>
       <p>
@@ -153,12 +271,20 @@
         process optimization, CRM configuration, integrations, and data-led insights—helping teams ship faster
         and run cleaner.
       </p>
-      <a class="btn" href="#contact">Contact</a>
+
+      <div class="heroActions">
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#skills">Skills</a>
+      </div>
     </section>
 
+    <!-- MAIN GRID -->
     <div class="grid">
+
+      <!-- LEFT: EXPERIENCE -->
       <section class="card">
-        <h2>Experience Highlights</h2>
+        <h2 id="experience">Experience Highlights</h2>
 
         <div class="job">
           <div class="jobhead">
@@ -171,7 +297,7 @@
             <li>Supported shift from D2C to B2B2C model, driving ~30% uplift in distributor participation.</li>
             <li>Built automated CRM + WhatsApp/email workflows supporting 1,000+ monthly interactions.</li>
             <li>Mapped processes + defined API specs for investment data ingestion across 20,000+ MF records.</li>
-            <li>Coordinated CAMS/KFin integrations; reduced reporting effort by 80% via Python automation.</li>
+            <li>Coordinated CAMS/KFin integrations; reduced reporting effort by ~80% via Python automation.</li>
             <li>Owned UAT, defect triage, and release readiness for dashboards and CRM capabilities.</li>
           </ul>
         </div>
@@ -200,32 +326,33 @@
           </div>
           <ul class="list">
             <li>Analyzed funnel performance by region/category; identified conversion leakage trends.</li>
-            <li>Built SQL + Google Sheets views/dashboards for pricing and promo decision support.</li>
+            <li>Built SQL + Google Sheets dashboards for pricing and promo decision support.</li>
           </ul>
         </div>
 
         <div class="kpi">
           <div class="pill">
-            <b>80% less reporting effort</b>
+            <b>~80% less reporting effort</b>
             <span>via automation & integrations</span>
           </div>
           <div class="pill">
             <b>20,000+ records handled</b>
-            <span>investment data ingestion + controls</span>
+            <span>investment ingestion + controls</span>
           </div>
           <div class="pill">
-            <b>1,000+ monthly touches</b>
+            <b>1,000+ monthly interactions</b>
             <span>CRM + WhatsApp/email workflows</span>
           </div>
           <div class="pill">
-            <b>40% better visibility</b>
+            <b>~40% better visibility</b>
             <span>Zoho CRM pipeline dashboards</span>
           </div>
         </div>
       </section>
 
+      <!-- RIGHT: SKILLS + PROJECTS + CONTACT -->
       <aside class="card">
-        <h2>Core Skills</h2>
+        <h2 id="skills">Core Skills</h2>
         <div class="tags">
           <span class="tag">Requirements Elicitation</span>
           <span class="tag">BRD / FRD</span>
@@ -244,29 +371,32 @@
           <span class="tag">CAMS / KFin / AMFI</span>
         </div>
 
-        <div style="height:14px"></div>
+        <div style="height:16px"></div>
 
-        <h2>Featured Projects</h2>
+        <h2 id="projects">Featured Projects</h2>
         <ul class="list muted">
           <li><b>Distributor onboarding automation:</b> lifecycle messaging + CRM workflows.</li>
-          <li><b>Investment data ingestion:</b> process + API spec + validation controls.</li>
-          <li><b>Commission & transaction dashboards:</b> decision support reporting.</li>
+          <li><b>Investment data ingestion:</b> process mapping + API specs + validations.</li>
+          <li><b>Commission & transaction dashboards:</b> MIS reporting for decision support.</li>
         </ul>
 
-        <div style="height:14px"></div>
+        <div style="height:16px"></div>
 
         <h2 id="contact">Contact</h2>
-        <p class="muted" style="margin:0">
+        <p class="muted" style="margin:0; max-width:60ch;">
           Email: <a href="mailto:sumaharp@gmail.com">sumaharp@gmail.com</a><br/>
           Phone: <a href="tel:+918331957491">+91 83319 57491</a><br/>
-          Location: Andhra Pradesh, India
+          Location: Andhra Pradesh, India<br/>
+          LinkedIn: <a href="https://www.linkedin.com/in/sumahar-pelluri-53025b170/" target="_blank" rel="noreferrer">https://www.linkedin.com/in/sumahar-pelluri-53025b170/</a>
         </p>
       </aside>
     </div>
 
     <div class="footer">
-      Tip: Host this for free using GitHub Pages or Netlify. Keep it as one clean page and update “Featured Projects” with 2–3 bullets per project.
+      Tip: Keep this one-page and update “Featured Projects” with 2–3 measurable bullets each.
+      Add your LinkedIn URL and upload your resume PDF to enable the Download button.
     </div>
+
   </div>
 </body>
 </html>
