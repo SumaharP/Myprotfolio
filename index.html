@@ -1,21 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sumahar Pelluri | Business Analyst (SaaS / Fintech)</title>
 
   <style>
+    /* ---------- THEME TOKENS ---------- */
     :root{
+      --shadow: 0 10px 30px rgba(0,0,0,.28);
+      --radius: 18px;
+    }
+
+    /* Dark theme (default) */
+    html[data-theme="dark"]{
       --bg:#0a0f1f;
-      --card:#141c3a;
+      --card: rgba(20,28,58,.74);
+      --card2: rgba(10,15,31,.38);
       --text:#f2f4fb;
       --muted:#c7cde6;
       --line:#2f3b73;
       --accent:#7aa2ff;
       --accent2:#7ef0c2;
+      --chip: rgba(10,15,31,.35);
+      --bgfx1: rgba(122,162,255,.18);
+      --bgfx2: rgba(126,240,194,.14);
+    }
 
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    /* Light theme */
+    html[data-theme="light"]{
+      --bg:#f6f8ff;
+      --card: rgba(255,255,255,.78);
+      --card2: rgba(245,247,255,.85);
+      --text:#0f172a;
+      --muted:#334155;
+      --line:#d7def5;
+      --accent:#2563eb;
+      --accent2:#059669;
+      --chip: rgba(255,255,255,.9);
+      --bgfx1: rgba(37,99,235,.10);
+      --bgfx2: rgba(5,150,105,.08);
+      --shadow: 0 10px 30px rgba(15, 23, 42, .10);
     }
 
     *{ box-sizing:border-box; }
@@ -24,8 +49,8 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,.18), transparent 60%),
-        radial-gradient(900px 500px at 100% 0%, rgba(126,240,194,.14), transparent 55%),
+        radial-gradient(1200px 600px at 20% -10%, var(--bgfx1), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, var(--bgfx2), transparent 55%),
         var(--bg);
       color:var(--text);
       line-height:1.75;
@@ -37,7 +62,7 @@
 
     .wrap{ max-width:1040px; margin:0 auto; padding:26px 16px 60px; }
 
-    /* Top bar */
+    /* ---------- TOP BAR ---------- */
     .topbar{
       display:flex;
       gap:16px;
@@ -45,8 +70,8 @@
       justify-content:space-between;
       padding:18px;
       border:1px solid var(--line);
-      border-radius:18px;
-      background: rgba(20,28,58,.72);
+      border-radius: var(--radius);
+      background: var(--card);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
@@ -63,9 +88,9 @@
       height:88px;
       border-radius:50%;
       object-fit:cover;
-      border:2px solid rgba(122,162,255,.65);
-      box-shadow: 0 8px 18px rgba(0,0,0,.35);
-      background: rgba(255,255,255,.06);
+      border:2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
       flex: 0 0 auto;
     }
 
@@ -86,7 +111,7 @@
       border-radius:999px;
       font-size:13px;
       color:var(--text);
-      background: rgba(10,15,31,.35);
+      background: var(--chip);
       white-space:nowrap;
     }
 
@@ -94,23 +119,30 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
-      border:1px solid rgba(122,162,255,.55);
+      border:1px solid color-mix(in srgb, var(--accent) 55%, transparent);
       padding:9px 12px;
       border-radius:12px;
       color:var(--text);
-      background: rgba(122,162,255,.14);
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
       font-size:13px;
       text-decoration:none;
+      cursor:pointer;
     }
-    .btn:hover{ text-decoration:none; filter:brightness(1.05); }
+    .btn:hover{ text-decoration:none; filter:brightness(1.03); }
 
-    /* Hero */
+    .btn.secondary{
+      border:1px solid var(--line);
+      background: var(--chip);
+      color: var(--text);
+    }
+
+    /* ---------- HERO ---------- */
     .hero{
       margin-top:18px;
       padding:22px;
       border:1px solid var(--line);
-      border-radius:18px;
-      background: rgba(20,28,58,.65);
+      border-radius: var(--radius);
+      background: var(--card);
       box-shadow: var(--shadow);
     }
 
@@ -135,7 +167,7 @@
       flex-wrap:wrap;
     }
 
-    /* Layout grid */
+    /* ---------- GRID ---------- */
     .grid{
       margin-top:18px;
       display:grid;
@@ -153,8 +185,8 @@
     .card{
       padding:22px;
       border:1px solid var(--line);
-      border-radius:18px;
-      background: rgba(20,28,58,.72);
+      border-radius: var(--radius);
+      background: var(--card);
       box-shadow: var(--shadow);
     }
 
@@ -171,7 +203,7 @@
     .list li{ margin:10px 0; line-height:1.7; }
 
     .job{
-      border-top:1px dashed rgba(47,59,115,.85);
+      border-top:1px dashed color-mix(in srgb, var(--line) 85%, transparent);
       padding-top:14px;
       margin-top:14px;
     }
@@ -188,7 +220,7 @@
     .jobtitle{ font-weight:800; }
     .jobmeta{ color:var(--muted); font-size:13px; }
 
-    /* KPI tiles */
+    /* KPI */
     .kpi{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -204,7 +236,7 @@
       border:1px solid var(--line);
       border-radius:16px;
       padding:12px;
-      background: rgba(10,15,31,.35);
+      background: var(--card2);
     }
     .pill b{ display:block; font-size:14px; }
     .pill span{ color:var(--muted); font-size:13px; }
@@ -216,22 +248,64 @@
       padding:7px 10px;
       border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(10,15,31,.35);
+      background: var(--card2);
       color:var(--muted);
     }
+
+    /* Certifications list */
+    .cert{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background: var(--card2);
+      margin:10px 0;
+    }
+    .cert b{ display:block; }
+    .cert small{ color:var(--muted); }
 
     /* Footer */
     .footer{
       margin-top:18px;
       padding:18px;
       border:1px solid var(--line);
-      border-radius:18px;
-      background: rgba(20,28,58,.55);
+      border-radius: var(--radius);
+      background: var(--card);
       color:var(--muted);
       font-size:13px;
       box-shadow: var(--shadow);
     }
+
+    /* Tiny helper */
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   </style>
+
+  <script>
+    // Theme: prefers-color-scheme default + localStorage override
+    (function () {
+      const saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+        return;
+      }
+      const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+      document.documentElement.setAttribute("data-theme", prefersLight ? "light" : "dark");
+    })();
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      const btn = document.getElementById("themeBtn");
+      if (btn) btn.textContent = next === "dark" ? "Dark" : "Light";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("themeBtn");
+      const current = document.documentElement.getAttribute("data-theme");
+      if (btn) btn.textContent = current === "dark" ? "Dark" : "Light";
+    });
+  </script>
 </head>
 
 <body>
@@ -240,12 +314,19 @@
     <!-- TOP BAR -->
     <div class="topbar">
       <div class="left">
-        <!-- 1) Upload your photo as profile.jpg in the repo root -->
-        <img class="avatar" src="profile.jpg" alt="Sumahar Pelluri">
+        <!-- Upload your photo as profile.jpg in the repo root (optional) -->
+        <img class="avatar" src="profile.jpg" alt="Sumahar Pelluri"
+             onerror="this.style.display='none'">
 
         <div>
           <p class="name">Sumahar Pelluri</p>
           <div class="role">Business Analyst • SaaS / Fintech • Ops Automation • CRM • Data</div>
+
+          <div class="row" style="margin-top:10px;">
+            <button class="btn secondary" onclick="toggleTheme()" type="button">
+              Theme: <span id="themeBtn">Dark</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -253,11 +334,13 @@
         <a class="chip" href="mailto:sumaharp@gmail.com">sumaharp@gmail.com</a>
         <a class="chip" href="tel:+918331957491">+91 83319 57491</a>
 
-        <!-- 2) Replace # with your LinkedIn URL -->
-        <a class="btn" href="https://www.linkedin.com/in/sumahar-pelluri-53025b170/" target="_blank" rel="noreferrer">https://www.linkedin.com/in/sumahar-pelluri-53025b170/</a>
+        <!-- Replace with your LinkedIn URL -->
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
 
-        <!-- 3) Upload your resume PDF as Sumahar_Pelluri_Resume.pdf in repo root -->
-        <a class="btn" href="Sumahar_Pelluri_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+        <!-- ✅ Resume link FIX: exact filename + ./ prefix -->
+        <a class="btn" href="./Sumahar_Pelluri_Resume.pdf" target="_blank" rel="noreferrer">
+          Download Resume
+        </a>
 
         <span class="chip">Andhra Pradesh, India</span>
       </div>
@@ -273,9 +356,10 @@
       </p>
 
       <div class="heroActions">
-        <a class="btn" href="#contact">Contact</a>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#skills">Skills</a>
+        <a class="btn secondary" href="#contact">Contact</a>
+        <a class="btn secondary" href="#projects">Projects</a>
+        <a class="btn secondary" href="#skills">Skills</a>
+        <a class="btn secondary" href="#certifications">Certifications</a>
       </div>
     </section>
 
@@ -350,7 +434,7 @@
         </div>
       </section>
 
-      <!-- RIGHT: SKILLS + PROJECTS + CONTACT -->
+      <!-- RIGHT: SKILLS + PROJECTS + CERTS + CONTACT -->
       <aside class="card">
         <h2 id="skills">Core Skills</h2>
         <div class="tags">
@@ -382,19 +466,35 @@
 
         <div style="height:16px"></div>
 
+        <h2 id="certifications">Certifications</h2>
+        <!-- Replace these placeholders with your real certificates -->
+        <div class="cert">
+          <b>[Certification Name]</b>
+          <small>[Issuer] • [Month YYYY]</small>
+        </div>
+        <div class="cert">
+          <b>[Certification Name]</b>
+          <small>[Issuer] • [Month YYYY]</small>
+        </div>
+        <div class="cert">
+          <b>[Certification Name]</b>
+          <small>[Issuer] • [Month YYYY]</small>
+        </div>
+
+        <div style="height:16px"></div>
+
         <h2 id="contact">Contact</h2>
         <p class="muted" style="margin:0; max-width:60ch;">
           Email: <a href="mailto:sumaharp@gmail.com">sumaharp@gmail.com</a><br/>
           Phone: <a href="tel:+918331957491">+91 83319 57491</a><br/>
-          Location: Andhra Pradesh, India<br/>
-          LinkedIn: <a href="https://www.linkedin.com/in/sumahar-pelluri-53025b170/" target="_blank" rel="noreferrer">https://www.linkedin.com/in/sumahar-pelluri-53025b170/</a>
+          Location: Andhra Pradesh, India
         </p>
       </aside>
     </div>
 
     <div class="footer">
-      Tip: Keep this one-page and update “Featured Projects” with 2–3 measurable bullets each.
-      Add your LinkedIn URL and upload your resume PDF to enable the Download button.
+      If the resume button doesn’t open, confirm the file name is exactly <b>Sumahar_Pelluri_Resume.pdf</b>
+      in the repo root (same level as index.html).
     </div>
 
   </div>
